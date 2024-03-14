@@ -1,11 +1,23 @@
 <header id="store">
   <h1>Greengrocers</h1>
+  <div>
+    <button (click)="filterByType('fruit')">Filter by Fruit</button>
+    <button (click)="filterByType('vegetable')">Filter by Vegetable</button>
+    <button (click)="clearFilter()">Clear Filter</button>
+  </div>
+  <div>
+    <button (click)="sortByName()">Sort by Name</button>
+    <button (click)="sortByPrice()">Sort by Price</button>
+    <button (click)="clearSorting()">Clear Sorting</button>
+  </div>
   <ul class="item-list store--item-list">
-    <li *ngFor="let item of storeItems">
+    <li *ngFor="let item of sortedItems">
       <div class="store--item-icon">
         <img [src]="'assets/icons/' + item.id + '.svg'" [alt]="item.name" />
       </div>
       <button (click)="addToCart.emit(item)">Add to cart</button>
     </li>
   </ul>
+  <!-- store.component.html -->
+  <button (click)="proceedToCheckout()">Proceed to Checkout</button>
 </header>

@@ -1,3 +1,4 @@
+// app.component.ts
 import { Component, OnInit } from '@angular/core';
 import { StoreService } from './store.service';
 
@@ -11,6 +12,7 @@ export class AppComponent implements OnInit {
   storeItems: any[] = [];
   cartItems: any[] = [];
   total: number = 0;
+  currentPage: string = 'store';
 
   constructor(private storeService: StoreService) {}
 
@@ -65,5 +67,13 @@ export class AppComponent implements OnInit {
       (acc, item) => acc + item.price * item.quantity,
       0
     );
+  }
+
+  navigateToStore() {
+    this.currentPage = 'store';
+  }
+
+  navigateToCheckout() {
+    this.currentPage = 'checkout';
   }
 }

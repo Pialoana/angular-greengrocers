@@ -1,10 +1,28 @@
+<!-- app.component.html -->
 <app-store
+  *ngIf="currentPage === 'store'"
   [storeItems]="storeItems"
   (addToCart)="addToCart($event)"
+  (navigateToCheckout)="navigateToCheckout()"
 ></app-store>
+
 <app-cart
+  *ngIf="currentPage === 'store' || currentPage === 'checkout'"
   [cartItems]="cartItems"
   (increaseQuantity)="increaseQuantity($event)"
   (decreaseQuantity)="decreaseQuantity($event)"
 ></app-cart>
-<app-total [total]="total"></app-total>
+
+<app-total
+  *ngIf="currentPage === 'store' || currentPage === 'checkout'"
+  [total]="total"
+></app-total>
+
+<app-checkout
+  *ngIf="currentPage === 'checkout'"
+  [cartItems]="cartItems"
+  [total]="total"
+  (increaseQuantity)="increaseQuantity($event)"
+  (decreaseQuantity)="decreaseQuantity($event)"
+  (navigateToStore)="navigateToStore()"
+></app-checkout>
