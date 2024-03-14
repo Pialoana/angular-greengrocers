@@ -1,9 +1,10 @@
-<header id="store">
-  <h1>Greengrocers</h1>
-  <!-- your store here -->
-</header>
-<main id="cart">
-  <h2>Your Cart</h2>
-  <!-- your cart here -->
-  <!-- your total here -->
-</main>
+<app-store
+  [storeItems]="storeItems"
+  (addToCart)="addToCart($event)"
+></app-store>
+<app-cart
+  [cartItems]="cartItems"
+  (increaseQuantity)="increaseQuantity($event)"
+  (decreaseQuantity)="decreaseQuantity($event)"
+></app-cart>
+<app-total [total]="total"></app-total>
